@@ -1,0 +1,34 @@
+LAP-DOER 
+-----------
+Lap time simulator using 4-wheeled car model including tire model (define which model).
+
+Damping, springs, chassis stiffeness not included for now.
+
+Igor Wants:
+- to be able to add diferent tracks, tests, challanges
+- to plausibly change tyre models and simulation metodologies
+- to suck dick all day all night 24/365
+
+Adam Wants:
+    1. to prioritize working solutions over "cleen" or "sexy" or "optimal" ones
+    2. documented decisions, while making decision you need to answer question why and hold it up to academic standards 
+        - put an answer to why? in comments, especialy when the answer to this question is arbitral or academia driven
+    3. to create code with forsight in mind, do not create code and shiet just for now 
+        - modular design, allways think what if this module is gona be replaced in the future (if aplicable of corse, simply think)
+    4. to aim to make this solution the best that we can, use the best solution not the easiest 
+    5. to plan twice and do once, or smth   
+
+Targets:
+ 
+1. Understanding of vehicle sensitivity for different parameters,
+2. Measurable and data-driven targets for other projects,
+3. Supporting drivers in finding car limits,
+4. Estimation of lap times and better preparation for competitions,
+5. Finding ideal setup for optimal tire usage
+
+
+
+Adam thinks this project should:
+    - give standarized output
+    - take diferent standards as an input 
+
