@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "lap-doer"
+version = "0.1.0"
+description = "A Python project managed with Poetry, tested with Pytest, and linted using Ruff."
+authors = ["Your Name <you@example.com>"]
+
+packages = [
+    { include = "lap_doer", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"  # You can specify the latest version or *
+pytest = "^7.0"
+black = "^25.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+src = ["src"]
+line-length = 88
+lint.select = ["E", "F", "B", "I", "UP"]
+lint.ignore = []
+
