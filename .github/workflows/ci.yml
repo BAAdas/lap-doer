@@ -23,8 +23,9 @@ jobs:
         run: poetry install
       
       - name: Run Ruff
-        run: poetry run ruff format
-        run: poetry run ruff check 
+        run: |
+        poetry run ruff format
+        poetry run ruff check 
 
       - name: Run Pytest
         run: poetry run pytest
