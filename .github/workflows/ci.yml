@@ -24,8 +24,8 @@ jobs:
       
       - name: Run Ruff
         run: |
-        poetry run ruff format
-        poetry run ruff check 
+          poetry run ruff format
+          poetry run ruff check 
 
       - name: Run Pytest
         run: poetry run pytest
