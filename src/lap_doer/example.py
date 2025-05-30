@@ -1,3 +1,3 @@
 def example(test):
-    """Cososososos  sososos s."""
+    """Cos s."""
     return 0
