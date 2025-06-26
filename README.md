@@ -12,7 +12,7 @@ A Python project managed with [Poetry](https://python-poetry.org/), tested with 
 poetry install
 ```
 
-For cleen comits run
+For clean commits run
 ```bash
 poetry run pre-commit install
 ```
