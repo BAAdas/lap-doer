@@ -1,7 +1,7 @@
+"""Classes for modeling tyres."""
+
 import math
 from typing import Callable
-
-from car_protocol import *
 
 
 class GenericTyreModel:
@@ -13,11 +13,12 @@ class GenericTyreModel:
         longitudinal_force_func: Callable[[float, float], float],
         coupling_func: Callable[[float, float, float], float],
     ):
-        """Args:
-        lateral_force_func: (slip_angle, normal_load) → lateral force (N)
-        longitudinal_force_func: (slip_ratio, normal_load) → longitudinal force (N)
-        coupling_func: (given_force, normal_load, mu) → remaining other force (N)
-        mu: Friction coefficient (default 1.0)
+        """Initialize the tyre model with force and coupling functions.
+
+        Args:
+            lateral_force_func: (slip_angle, normal_load) → lateral force (N).
+            longitudinal_force_func: (slip_ratio, normal_load) → longitudinal force (N).
+            coupling_func: (given_force, normal_load) → remaining other force (N).
         """
         self._lateral_force_func = lateral_force_func
         self._longitudinal_force_func = longitudinal_force_func
@@ -45,12 +46,20 @@ class GenericTyreModel:
 
 
 def tyre_example():
+    """Example usage of the GenericTyreModel demonstrating force calculations."""
     print('TYRE EXAMPLE')
     # Define basic linear lateral and longitudinal force functions
-    lat_func = lambda slip_angle, normal_load: 10.0 * normal_load * slip_angle
-    long_func = lambda slip_ratio, normal_load: 12.0 * normal_load * slip_ratio
 
-    ellipse_coupling = lambda given_force, normal_load: max(0.0, math.sqrt(normal_load**2 - given_force**2) if abs(given_force) <= normal_load else 0.0)
+    def lat_func(slip_angle: float, normal_load: float) -> float:
+        return 10.0 * normal_load * slip_angle
+
+    def long_func(slip_ratio: float, normal_load: float) -> float:
+        return 12.0 * normal_load * slip_ratio
+
+    def ellipse_coupling(given_force: float, normal_load: float) -> float:
+        if abs(given_force) <= normal_load:
+            return max(0.0, math.sqrt(normal_load**2 - given_force**2))
+        return 0.0
 
     # Create tyre model
     tyre = GenericTyreModel(
@@ -80,7 +89,3 @@ def tyre_example():
     print(f'Slip ratio: {slip_ratio} → Longitudinal force: {long_force:.1f} N')
     print(f'Remaining lateral force capacity after {long_force:.1f} N long. force: {remaining_lat:.1f} N')
     print(f'Remaining longitudinal force capacity after {lat_force:.1f} N lat. force: {remaining_long:.1f} N')
-
-
-if __name__ == '__main__':
-    main()

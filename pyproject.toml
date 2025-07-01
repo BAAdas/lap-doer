@@ -75,9 +75,11 @@ select = [
     "W",    # pycodestyle warning (check against some of style conventions in PEP 8)
 ]
 ignore = [
-    "COM812",# Trailing comma missing
-    "Q000",  # Single quotes found but double quotes preferred
-    "Q003",  # Change outer quotes to avoid escaping inner quotes
+    "W505",     # Too long docstrings
+    "PLR0913",  # Too many arguments
+    "COM812",   # Trailing comma missing
+    "Q000",     # Single quotes found but double quotes preferred
+    "Q003",     # Change outer quotes to avoid escaping inner quotes
 ]
 
 [tool.ruff.lint.per-file-ignores]
