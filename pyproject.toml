@@ -25,6 +25,7 @@ src = ["src"]
 line-length = 158
 show-fixes = true
 output-format = "full"
+exclude = ["*/__init__.py"]
 
 [tool.ruff.format]
 quote-style = "single"
