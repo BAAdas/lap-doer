@@ -11,27 +11,110 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.10"
 pre-commit = "^4.2.0"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "*"  # You can specify the latest version or *
-pytest = "^7.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+scipy = "^1.15.3"
+matplotlib = "^3.10.3"
+numpy = "^2.2.6"
+pyright = "^1.1.401"
+flake8 = "^7.2.0"
+flake8-docstrings = "^1.7.0"
+ruff = "^0.12.1"
+pytest = "^8.4.1"
 
 [tool.ruff]
 src = ["src"]
-line-length = 100
-target-version = "py39"
-lint.select = ["E", "W", "F", "N", "D", "I", "PL"]
-lint.ignore = ["D100", "D104"]
+line-length = 158
+show-fixes = true
+output-format = "full"
+exclude = ["*/__init__.py"]
+
+[tool.ruff.format]
+quote-style = "single"
+line-ending = "lf"
+
+[tool.ruff.lint]
+select = [
+    "A",    # builtins (builtins being used as variables or parameters)
+    "ARG",  # unused-arguments (checks for unused function arguments)
+    "B",    # bugbear (likely bugs and design problems)
+    "BLE",  # blind-except (except Exception: statements)
+    "C4",   # comprehensions (write better list/set/dict comprehensions)
+    "C90",  # mccabe (check McCabe complexity)
+    "COM",  # commas (missing trailing comma)
+    "D",    # pydocstyle (checking compliance with docstring conventions)
+    "DTZ",  # datetimez (ban the usage of unsafe naive datetime class)
+    "E",    # pycodestyle error (check against some of style conventions in PEP 8)
+    "EM",   # errmsg (helps format nice error messages)
+    "ERA",  # eradicate (commented-out code)
+    "EXE",  # executable (ensures the x permissions and shebangs are correctly set)
+    "F",    # pyflakes (detects various errors)
+    "FIX",  # fixme (check for FIXME, TODO and other temporary notes)
+    "FLY",  # flynt (convert code to f-strings)
+    "FURB", # refurb (refurbishing and modernizing codebases)
+    "G",    # logging-format (validate logging format strings)
+    "I",    # isort (sort imports)
+    "ICN",  # import-conventions (how certain packages should be imported)
+    "INP",  # no-pep420 (implicit namespace packages)
+    "INT",  # gettext
+    "ISC",  # implicit-str-concat (problems like implicitly concatenated string)
+    "LOG",  # logging (checks for issues using the standard logging module)
+    "N",    # naming (check code against PEP 8 naming conventions)
+    "PERF", # perflint (linter for performance anti-patterns)
+    "PGH",  # pygrep-hooks (fast, cheap, regex based pre-commit hooks)
+    "PIE",  # pie (misc. lints)
+    "PLE",  # error
+    "PLR",  # refactor
+    "PLW",  # warning
+    "PT",   # pytest-style (common style issues with pytest)
+    "RUF",  # ruff-specific lints
+    "Q",    # quotes
+    "RET",  # return (checks return values)
+    "RSE",  # raise (finds improvements for raise statements)
+    "S",    # bandit (security testing)
+    "SIM",  # simplify (helps you simplify code)
+    "SLF",  # self (private member access linting)
+    "TID",  # tidy-imports (helps write tidier imports)
+    "TRY",  # tryceratops (prevents exception handling antipatterns)
+    "UP",   # pyupgrade (upgrade syntax for newer versions of python)
+    "W",    # pycodestyle warning (check against some of style conventions in PEP 8)
+]
+ignore = [
+    "W505",     # Too long docstrings
+    "PLR0913",  # Too many arguments
+    "COM812",   # Trailing comma missing
+    "Q000",     # Single quotes found but double quotes preferred
+    "Q003",     # Change outer quotes to avoid escaping inner quotes
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "D100",  # Missing docstring in public module 
+    "D103",  # Missing docstring in public function
+    "D104",  # Missing docstring in public package
+    "S101",  # Use of assert
+    "S106",  # Possible hardcoded password assigned to argument: "password"
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+parametrize-names-type = "csv"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 5
+
+[tool.ruff.lint.isort]
+force-single-line = true
+force-sort-within-sections = true
+order-by-type = false
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 88
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
-line-ending = "lf"
 
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
