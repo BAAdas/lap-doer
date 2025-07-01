@@ -17,6 +17,8 @@ numpy = "^2.2.6"
 pyright = "^1.1.401"
 flake8 = "^7.2.0"
 flake8-docstrings = "^1.7.0"
+ruff = "^0.12.1"
+pytest = "^8.4.1"
 
 [tool.ruff]
 src = ["src"]
